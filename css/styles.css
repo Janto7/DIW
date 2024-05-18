@@ -1,0 +1,2189 @@
+a,
+p,
+label,
+select,
+option,
+button {
+  font-family: "Keania One";
+  font-size: 1em;
+  line-height: 1.5em;
+  /* Ajusta la altura de línea */
+  letter-spacing: 0.12em;
+  /* Ajusta el espaciado entre letras */
+  word-spacing: 0.12em;
+  /* Ajusta el espaciado entre palabras */
+}
+
+html {
+  height: 100%; /* Asegura que el elemento raíz siempre tenga la altura completa del viewport */
+}
+
+body {
+  display: flex;
+  flex-direction: column; /* Mantiene el flujo vertical */
+  min-height: 100vh; /* Asegura que el cuerpo ocupe al menos el 100% del viewport */
+  margin: 0;
+  padding: 0;
+  background-color: rgb(168, 199, 240);
+}
+
+.main-container {
+  flex: 1; /* Permite que el contenedor principal crezca y llene el espacio, empujando el footer hacia abajo */
+}
+
+h1,
+h2 {
+  font-size: 2.1875em;
+  line-height: 1.5em;
+}
+
+h3,
+h4 {
+  font-size: 1.5em;
+  line-height: 1.5em;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Kavoon";
+  letter-spacing: 0.12em;
+}
+
+/* Header */
+/* Estilos para el contenedor del encabezado */
+.header-container {
+  display: grid;
+  grid-template-areas: "title logo nav menu";
+  grid-auto-columns: auto auto 1fr auto; /* Título - logo - navegación - menú móvil */
+  align-items: center;
+  background-color: rgb(127, 129, 236);
+  height: 50px;
+  position: fixed; /* Posición fija */
+  top: 0; /* Alineado al tope de la ventana del navegador */
+  width: 100%; /* Ocupa el ancho completo de la ventana del navegador */
+  z-index: 10; /* Asegura que el header se sitúe por encima de otros elementos */
+}
+
+/* Estilos para el título en el encabezado */
+.web-title {
+  grid-area: title;
+  font-size: 1.5em;
+  color: #fff;
+  margin: 0; /* Remueve márgenes predeterminados */
+  padding: 0 10px;
+}
+
+/* Estilos para el logo en el encabezado */
+.logo {
+  grid-area: logo;
+  outline: none; /* Elimina el borde de foco/activo */
+  border: none; /* Elimina el borde */
+}
+
+/* Estilos por defecto (para modo claro) */
+.logo-oscuro {
+  display: none;
+  /* Oculta el logo oscuro inicialmente */
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-1px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Animación de "pulsación y rotación" al pasar el ratón */
+@keyframes pulseRotate {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+#path19 {
+  animation: shake 2s ease-out;
+}
+
+.logo:hover svg {
+  animation: pulseRotate 2s infinite linear;
+}
+
+/* Estilos para la navegación en escritorio */
+.desktop-nav {
+  display: none;
+  grid-area: nav;
+  justify-self: end;
+}
+
+/* Estilos para la lista de navegación en escritorio */
+.desktop-nav ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Estilos para los elementos de la lista de navegación en escritorio */
+.desktop-nav ul li a {
+  display: flex;
+  align-items: center; /* Alinea los elementos al centro verticalmente */
+  text-decoration: none;
+  color: #000;
+  padding: 5px 10px;
+  transition: background-color 1s ease;
+}
+
+/* Estilos para los enlaces con íconos */
+.icon-link {
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos por defecto (para modo claro) */
+.icono-perfil-oscuro {
+  display: none; /* Oculta el icono de perfil oscuro inicialmente */
+}
+
+/* Estilos para los iconos de perfil */
+.icono-perfil {
+  width: 24px;
+  height: auto;
+  vertical-align: middle; /* para alinear el icono verticalmente con el texto */
+  margin-right: 8px; /* para dar espacio entre el icono y el texto */
+}
+
+.icono-carrito-container {
+  width: 36px;
+  height: auto;
+  vertical-align: middle; /* para alinear el icono verticalmente con el texto */
+  margin-right: 8px; /* para dar espacio entre el icono y el texto */
+}
+
+/* Estilos por defecto (para modo claro) */
+.icono-carrito-oscuro {
+  display: none; /* Oculta el icono de carrito oscuro inicialmente */
+}
+
+.icono-carrito-claro {
+  display: inline; /* Muestra el icono de carrito claro por defecto */
+}
+
+/* Estilos para las imágenes dentro de los enlaces con íconos */
+.icon-link img {
+  width: 40px;
+  height: auto; /* Para mantener las proporciones */
+  outline: none; /* Elimina el borde de foco/activo */
+  border: none; /* Elimina el borde */
+}
+
+/* Estilos para los elementos de la lista de navegación en escritorio al pasar el mouse */
+.desktop-nav ul li a:hover {
+  background-color: #cef08f;
+}
+
+/* Menú hamburguesa */
+/* Oculta el checkbox */
+#menuToggle {
+  display: none;
+}
+
+/* Estilos para el botón del menú de hamburguesa */
+#launchMovil {
+  display: flex;
+  align-items: center;
+  grid-area: menu;
+}
+
+/* Ajustes específicos para el ícono de menú hamburguesa */
+#launchMovil img {
+  width: 30px;
+  height: auto; /* Mantiene las proporciones del ícono */
+  outline: none; /* Elimina el borde de foco/activo */
+  border: none; /* Elimina el borde */
+}
+
+/* Estilos por defecto para el menú principal en dispositivos móviles. Por defecto, el menú principal está oculto en dispositivos móviles */
+#navPrincipal {
+  position: fixed;
+  top: 50px;
+  right: -100%; /* Esconde el menú a la derecha */
+  width: 70%;
+  height: 100vh;
+  background-color: rgba(123, 64, 219, 0.9);
+  overflow-y: auto;
+  transition: right 0.5s ease-in-out; /* Transición desde la derecha */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+/* Estilos para la lista dentro del menú principal en dispositivos móviles */
+#navPrincipal ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Estilos para los elementos de la lista dentro del menú principal en dispositivos móviles */
+#navPrincipal ul li {
+  margin: 10px 0;
+}
+
+/* Estilos para los enlaces dentro del menú principal en dispositivos móviles */
+#navPrincipal ul li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* Estilos para los enlaces visitados en la navegación de escritorio */
+.desktop-nav ul li a:visited {
+  color: purple;
+}
+
+/* Si el checkbox está marcado, muestra el menú */
+#menuToggle:checked ~ #navPrincipal {
+  right: 0;
+}
+
+/* Submenu */
+/* Estilos para el submenu en la navegación de escritorio */
+.desktop-nav ul li.submenu {
+  position: relative; /* Esto es necesario para posicionar el submenú respecto a este elemento */
+}
+
+/* Estilos por defecto para el submenu en la navegación de escritorio */
+.desktop-nav ul li.submenu ul {
+  display: none;
+  position: absolute;
+  top: 100%; /* Coloca el submenú justo debajo del elemento de la lista */
+  left: 0;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  background-color: rgb(127, 129, 236);
+}
+
+/* Muestra el submenu cuando se pasa el mouse sobre el elemento principal */
+.desktop-nav ul li.submenu:hover ul {
+  display: block;
+}
+
+/* Estilos para los enlaces dentro del submenu */
+.desktop-nav ul li.submenu ul li a {
+  padding: 10px;
+  display: block;
+  color: #000;
+  text-decoration: none;
+  transition: background-color 2s ease;
+}
+
+/* Estilos para los enlaces dentro del submenu al pasar el mouse */
+.desktop-nav ul li.submenu ul li a:hover {
+  background-color: #cef08f;
+}
+
+/* Estilos para los enlaces visitados dentro del submenu */
+.desktop-nav ul li.submenu ul li a:visited {
+  color: purple;
+}
+
+/* Estilos para el contenedor principal de index.html */
+/* Estilos base */
+.main-container {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-areas:
+    "hero hero"
+    "contenido sidebar"
+    "banner banner" 
+    "gamecard gamecard";
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: rgb(168, 199, 240);
+
+}
+
+.banner-container {
+  grid-area: banner;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-iframe {
+  width: 857px; /* Ancho fijo del banner */
+  height: 238px; /* Altura fija del banner */
+  border: none; /* Elimina el borde del iframe */
+}
+
+/* Estilos responsivos para imágenes y marcos de video (iframe) */
+img,
+iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero {
+  grid-area: hero;
+  height: auto;
+  position: relative;
+  margin-top: 50px;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  color: white;
+  text-align: left;
+  width: 20%;
+  /* Ajusta al ancho del degradado negro */
+  padding-left: 20px;
+  box-sizing: border-box;
+}
+
+/* Animación pulse */
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1); /* Estado inicial */
+  }
+
+  50% {
+    transform: scale(1.1); /* Aumenta la escala en un 10% */
+  }
+
+  100% {
+    transform: scale(1); /* Vuelve al estado inicial */
+  }
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  animation: pulseAnimation 2s infinite ease-in-out;
+}
+
+/* Estilos para el contenido principal */
+.contenido-principal {
+  grid-area: contenido;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Estilos para los títulos dentro del contenido principal */
+.contenido-principal h2 {
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+/* Estilos para los párrafos dentro del contenido principal */
+.contenido-principal p {
+  text-align: center;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+/* Estilos para el contenedor de plataformas */
+.plataformas-contenedor {
+  grid-area: plataformas;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilos para los títulos y listas de plataformas */
+.plataformas-titulo,
+.plataformas-disponibles {
+  text-align: center;
+}
+
+/* Estilos para el contenedor de video */
+.video-container {
+  grid-area: video; /* Asigna la área del grid */
+  width: 50vw; /* Ancho del 50% de la ventana */
+  padding-top: 25vw; /* Relleno superior para mantener proporciones */
+  position: relative; /* Posicionamiento relativo */
+  margin: 0 auto; /* Centrado horizontal */
+  margin-top: 15px; /* Margen superior */
+}
+
+/* Estilos para el iframe dentro del contenedor de video */
+.video-container iframe {
+  position: absolute; /* Posicionamiento absoluto */
+  top: 0; /* Alineado arriba */
+  left: 0; /* Alineado a la izquierda */
+  width: 100%; /* Ancho del 100% */
+  height: 100%; /* Altura del 100% */
+}
+
+.imagenes-fila {
+  grid-area: imagenes;
+  display: grid;
+  position: relative;
+  width: 90%;
+  margin: 25px auto;
+  overflow: hidden;
+  border: 2px solid rgb(32, 5, 131);
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 10px;
+  gap: 10px;
+}
+
+.imagenes-fila .imagenes-contenedor {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.imagenes-fila a {
+  display: inline-block;
+  margin: 5px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  line-height: 0;
+  width: calc((100% - 40px) / 4); /* 40px es el total del gap entre imágenes */
+}
+
+.imagenes-fila img {
+  width: 100%;
+  height: auto;
+}
+
+.imagenes-fila button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  z-index: 2;
+}
+
+.imagenes-fila .prev {
+  left: 0;
+}
+
+.imagenes-fila .next {
+  right: 0;
+}
+
+@media (max-width: 768px) {
+  .imagenes-fila {
+    width: 100%;
+    padding: 0; /* Eliminar padding adicional */
+    overflow: hidden; /* Asegurar que no haya desbordamiento horizontal */
+  }
+
+  .imagenes-fila .imagenes-contenedor {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    gap: 10px; /* Añadir espacio entre las imágenes */
+    padding: 0 10px; /* Añadir padding para centrar las imágenes dentro del contenedor */
+  }
+
+  .imagenes-fila a {
+    scroll-snap-align: start;
+    flex: 0 0 80%; /* Ajusta el tamaño de los elementos para dispositivos móviles */
+  }
+
+  .imagenes-fila button {
+    display: none; /* Oculta los botones en dispositivos móviles */
+  }
+}
+
+/* Estilos para la barra lateral */
+.sidebar {
+  grid-area: sidebar; /* Asigna la área del grid */
+  background-color: #a3f1c4; /* Color de fondo */
+  padding: 10px; /* Relleno */
+  border-radius: 5px; /* Bordes redondeados */
+  display: flex; /* Establece un contenedor flexible */
+  flex-direction: column; /* Los elementos se disponen en columna */
+  justify-content: space-between; /* Espaciado entre elementos */
+}
+
+/* Estilos para las imágenes en la barra lateral */
+.sidebar .imagenes-sidebar {
+  display: flex; /* Establece un contenedor flexible */
+  flex-direction: column; /* Los elementos se disponen en columna */
+  flex: 1; /* Ocupa todo el espacio disponible */
+}
+
+/* Estilos para cada imagen en la barra lateral */
+.sidebar .imagen-sidebar {
+  display: flex; /* Establece un contenedor flexible */
+  flex-direction: column; /* Los elementos se disponen en columna */
+  margin: 10px 0; /* Margen superior e inferior */
+}
+
+/* Ajuste de márgenes para elementos .imagen-sidebar */
+.sidebar .imagen-sidebar:not(:last-child) {
+  margin-bottom: auto; /* Margen inferior automático para todos excepto el último elemento */
+}
+
+/* Estilos para las imágenes en la barra lateral */
+.sidebar .imagen-sidebar img {
+  width: 100%; /* Ancho del 100% */
+  height: auto; /* Altura automática */
+  border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilos para los títulos en la barra lateral */
+.sidebar .imagen-sidebar h4 {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Estilos para los párrafos en la barra lateral */
+.sidebar .imagen-sidebar p {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Estilos para el contenedor de tarjetas de juego */
+.gamecard-wrapper {
+  grid-area: gamecard; /* Asigna la área del grid */
+  background-color: blue; /* Color de fondo */
+  padding: 20px; /* Relleno */
+  display: flex; /* Establece un contenedor flexible */
+  justify-content: center; /* Centra los elementos horizontalmente */
+}
+
+/* Estilos para las tarjetas de juego */
+.gamecard {
+  display: grid; /* Establece un contenedor de grid */
+  grid-template-columns: 1fr 1fr 1fr; /* Tres columnas con la misma fracción */
+  gap: 20px; /* Espaciado entre elementos */
+  width: 80%; /* Ancho del 80% */
+}
+
+/* Estilos para el título de las tarjetas de juego */
+.gamecard h3 {
+  grid-column: 1 / 4; /* Ocupa las 3 columnas */
+  text-align: center; /* Texto centrado */
+  margin-bottom: 20px; /* Margen inferior */
+  color: #fff; /* Color del texto */
+}
+
+/* Estilos para cada ítem de las tarjetas de juego */
+.gamecard-item {
+  text-align: center; /* Texto centrado */
+  margin-bottom: 20px; /* Margen inferior */
+  color: #fff; /* Color del texto */
+}
+
+/* Estilos para las imágenes de las tarjetas de juego */
+.gamecard img {
+  width: 300px; /* Ancho de 300px */
+  height: auto; /* Altura automática */
+  margin: 0 auto; /* Centrado horizontal */
+}
+
+/* Espaciado entre imagen y título en las tarjetas de juego */
+.gamecard-item img {
+  margin-bottom: 10px; /* Margen inferior */
+}
+
+/* Estilos al posicionar el cursor sobre la imagen de las tarjetas de juego */
+.gamecard img:hover {
+  /* Oscurece la imagen y añade un toque sepia */
+ filter: brightness(80%) sepia(20%);
+ /* Aumenta el tamaño un 10% y rota ligeramente */
+ transform: scale(1.1) rotate(5deg);
+ /* Añade una sombra para dar sensación de profundidad */
+ box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+  /* Transición suave para transformación, filtro y sombra */
+ transition: transform 0.5s ease, filter 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Estilos para el pie de página */
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.footer {
+  margin-top: auto;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgb(127, 129, 236);
+  background-image: linear-gradient(45deg, rgb(127, 129, 236), rgb(134, 136, 245), rgb(127, 129, 236));
+  background-size: 200% 200%;
+  animation: gradientBackground 15s ease infinite;
+  color: #ffffff;
+  
+}
+
+/* Estilos para la información en el pie de página */
+.footer-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Estilos para el contenedor de íconos de redes sociales */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Estilos y animación para los íconos de redes sociales */
+.social-icon {
+  width: 25px;
+  height: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* Contenido principal ficha.html */
+.game-card {
+  display: grid;
+  grid-template-columns: auto auto auto 1fr;
+  grid-template-areas:
+    "image title title platforms-editions"
+    "image line line line"
+    "image release date video"
+    "image price price2 video"
+    "image description description description"
+    "image buy cart ."
+    "imagenes imagenes imagenes imagenes";
+  gap: 20px;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: rgb(121, 170, 233);
+  align-items: center;
+  overflow: hidden; /* Para evitar scroll horizontal */
+
+}
+
+/* Animación borde */
+@keyframes borderAnimation {
+  0% {
+    box-shadow: 0 0 0 4px rgb(98, 0, 255);
+  }
+  25% {
+    box-shadow: 0 0 0 4px rgb(0, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgb(16, 177, 226);
+  }
+  75% {
+    box-shadow: 0 0 0 4px rgb(255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgb(223, 46, 170);
+  }
+}
+
+@keyframes shadowMove {
+  0%, 100% {
+    box-shadow: 0px 0px 0 4px rgb(98, 0, 255);
+  }
+  25% {
+    box-shadow: 4px 4px 0 4px rgb(0, 255, 0);
+  }
+  50% {
+    box-shadow: -4px -4px 0 4px rgb(16, 177, 226);
+  }
+  75% {
+    box-shadow: 4px -4px 0 4px rgb(255, 255, 0);
+  }
+}
+
+/* Imagen principal */
+.game-image {
+  grid-area: image;
+}
+
+/* Estilos para la imagen dentro de .game-image */
+.game-image img {
+  border-radius: 10px;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  opacity: 0; /* Oculta inicialmente */
+  transition: opacity 0.5s ease;
+}
+
+/* Alineación al centro para el título, dropdowns y video */
+.game-title,
+.dropdowns,
+.video-container-ficha {
+  align-self: center;
+}
+
+/* Título */
+.game-title {
+  grid-area: title;
+}
+
+/* Contenedor de dropdowns */
+.dropdowns {
+  display: flex;
+  gap: 10px;
+  border: none;
+  background-color: #a3f1c4;
+  border-radius: 10px;
+  padding: 10px;
+  justify-self: center;
+  grid-area: platforms-editions;
+}
+
+/* Estilos para los elementos select dentro de .dropdowns */
+.dropdowns select {
+  border: 2px solid rgb(121, 170, 233);
+  border-radius: 10px;
+}
+
+.game-editions {
+  grid-area: dropdowns2;
+}
+
+/* Animación para la línea verde */
+@keyframes moveAndChangeColor {
+  0% {
+    transform: translateX(0%);
+    background-color: rgb(32, 5, 131);
+  }
+  50% {
+    transform: translateX(100%);
+    background-color: rgb(0, 255, 0);
+  }
+  100% {
+    transform: translateX(0%);
+    background-color: rgb(32, 5, 131);
+  }
+}
+
+/* Línea verde decorativa */
+.green-line {
+  grid-area: line;
+  background-color: rgb(32, 5, 131);
+  border-radius: 3px;
+  height: 4px;
+  width: 100%;
+  align-self: center;
+}
+
+/* Fecha de lanzamiento y precio */
+.game-release-date,
+.game-price {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Detalle de fecha y precio */
+.date,
+.price {
+  color: #555;
+}
+
+.game-release-date,
+.date,
+.game-price,
+.price {
+  padding: 5px 0;
+  text-align: center;
+}
+
+/* Contenedor para el video */
+.video-container-ficha {
+  grid-area: video;
+  width: 30vw;
+  padding-top: 15vw;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+.video-container-ficha iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.game-description {
+  grid-area: description;
+}
+
+/* Botones de compra y añadir al carrito */
+.game-buy,
+.game-add {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.game-buy {
+  background-color: #f39c12;
+  color: #fff;
+  grid-area: buy;
+}
+
+.game-buy:hover {
+  background-color: #e67e22;
+}
+
+.game-add {
+  background-color: #4caf50;
+  color: #fff;
+  grid-area: cart;
+}
+
+.game-add:hover {
+  background-color: #45a049;
+}
+
+/* Estilos base para las imágenes dentro de .imagenes-fila */
+.imagenes-fila img {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+/* Clases para activar animaciones */
+.game-image.visible img {
+  opacity: 1;
+  animation: borderAnimation 8s infinite linear, shadowMove 8s infinite linear;
+}
+
+.green-line.visible {
+  animation: moveAndChangeColor 5s infinite linear;
+}
+
+/* Contenido principal merchandising */
+/* Contenedor principal para los productos de merchandising. */
+.merchandising {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 20px;
+  row-gap: 10px;
+  margin-top: 50px;
+  background-color: rgb(121, 170, 233);
+}
+
+/* Estilos para cada producto de merchandising. */
+.merch-item {
+  flex: 0 0 calc(33.333% - 10px);
+  box-sizing: border-box;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+  background-color: #fff;
+}
+
+/* Estilos para el título del producto. */
+.merch-item h2 {
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Estilo para el efecto hover en el producto. */
+.merch-item:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Estilos para la imagen del producto. */
+.merch-item img {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px auto;
+  transition: transform 0.3s;
+}
+
+/* Estilo para el efecto hover en la imagen del producto. */
+.merch-item img:hover {
+  transform: scale(1.05);
+  margin-bottom: 20px;
+}
+
+/* Estilos para el precio del producto. */
+.merch-price {
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Contenedor para los botones de acción. */
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* Estilos para el botón de añadir al carrito. */
+.merch-add {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f39c12;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Estilos para el botón de comprar ahora. */
+.merch-buy {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Estilo para el efecto hover en el botón de añadir al carrito. */
+.merch-add:hover {
+  background-color: #e67e22;
+}
+
+/* Estilo para el efecto hover en el botón de comprar ahora. */
+.merch-buy:hover {
+  background-color: #45a049;
+}
+
+/* Estilos para el contenedor de paginación */
+.contenedor-paginacion {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Estilos para los enlaces de los iconos de paginación */
+.contenedor-paginacion .icon-link {
+  margin: 0 15px;
+  display: inline-block;
+}
+
+/* Estilos por defecto para los iconos de paginación (para modo claro) */
+.icono-paginacion {
+  display: none;
+}
+
+.icono-retroceder-claro,
+.icono-avanzar-claro {
+  display: inline;
+}
+
+/* Snackbar */
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.7), 0 0 20px rgba(255, 0, 0, 0.7);
+  transform: translateX(-50%);
+  transition: visibility 0s, opacity 0.5s linear;
+  opacity: 0;
+}
+
+#snackbar.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Estilos generales para la página "Sobre Nosotros" */
+.about-us {
+  margin-top: 50px;
+  /* Espacio superior externo para separar de otros elementos. */
+  margin-bottom: 0;
+  /* Elimina cualquier margen inferior para evitar espacio extra antes del footer */
+  background-color: rgb(168, 199, 240);
+  color: #fff;
+  text-align: center;
+  margin-top: 50px;
+  /* Espacio superior externo para separar de otros elementos. */
+  padding-bottom: 20px;
+  /* Añade algo de espacio antes del footer */
+}
+
+/* Efecto Parallax y Animación para la Sección del Equipo */
+.team-photo-parallax {
+  height: 800px;
+  /* Aumentar la altura para mostrar más de la imagen */
+  background: url("../img/estudio.jpg") no-repeat fixed center;
+  background-size: cover;
+  /* Asegurarse de que la imagen cubra toda el área */
+  display: flex;
+  align-items: center;
+  /* Alineación vertical */
+  justify-content: center;
+  /* Alineación horizontal */
+  animation: parallaxMove 10s ease-in-out infinite;
+}
+
+.parallax-content {
+  background: rgba(0, 0, 0, 0.8);
+  /* Hacer el fondo ligeramente más oscuro */
+  padding: 30px;
+  /* Aumentar el padding para más espacio */
+  border-radius: 15px;
+  /* Bordes más redondeados */
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+  /* Efecto neón verde más intenso */
+  max-width: 70%;
+  /* Limitar el ancho máximo del contenido */
+  text-align: left;
+  /* Alineación del texto a la izquierda */
+}
+
+/* Animación de Movimiento del Fondo Parallax */
+@keyframes parallaxMove {
+  0%,
+  100% {
+    background-position: center;
+  }
+
+  50% {
+    background-position: 20% center;
+  }
+
+  /* Movimiento horizontal del fondo */
+}
+
+/* Estilos para la Sección del Mapa */
+.location-map {
+  background-color: rgba(12, 12, 12, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px; /* Margen superior */
+  margin-bottom: 20px; /* Margen inferior para separar del video */
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  max-width: 800px;
+}
+
+/* Estilos para la Sección del Video */
+.youtube-video {
+  background-color: rgba(12, 12, 12, 0.9);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px; /* Margen superior para separar del mapa */
+  margin-bottom: 50px; /* Margen inferior para separar del footer */
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  max-width: 800px;
+}
+
+/* Estilos para el iframe del mapa */
+.location-map iframe {
+  width: 100%;
+  height: 450px;
+  border-radius: 10px;
+}
+
+/* Mantener los estilos originales del video */
+.video-wrapper {
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 0, 0.6);
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.typewriter span {
+  opacity: 0;
+  display: inline-block;
+}
+
+@keyframes typing {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.typewriter span {
+  animation-name: typing;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.typewriter span:nth-child(1) { animation-delay: 0.2s; }
+.typewriter span:nth-child(2) { animation-delay: 0.4s; }
+.typewriter span:nth-child(3) { animation-delay: 0.6s; }
+.typewriter span:nth-child(4) { animation-delay: 0.8s; }
+.typewriter span:nth-child(5) { animation-delay: 1s; }
+.typewriter span:nth-child(6) { animation-delay: 1.2s; }
+.typewriter span:nth-child(7) { animation-delay: 1.4s; }
+.typewriter span:nth-child(8) { animation-delay: 1.6s; }
+.typewriter span:nth-child(9) { animation-delay: 1.8s; }
+.typewriter span:nth-child(10) { animation-delay: 2.0s; }
+.typewriter span:nth-child(11) { animation-delay: 2.0s; }
+.typewriter span:nth-child(12) { animation-delay: 2.2s; }
+.typewriter span:nth-child(13) { animation-delay: 2.4s; }
+.typewriter span:nth-child(14) { animation-delay: 2.6s; }
+.typewriter span:nth-child(15) { animation-delay: 2.8s; }
+.typewriter span:nth-child(16) { animation-delay: 3.0s; }
+.typewriter span:nth-child(17) { animation-delay: 3.2s; }
+.typewriter span:nth-child(18) { animation-delay: 3.4s; }
+.typewriter span:nth-child(19) { animation-delay: 3.6s; }
+.typewriter span:nth-child(20) { animation-delay: 3.7s; }
+.typewriter span:nth-child(21) { animation-delay: 3.8s; }
+
+.canvas-wrapper {
+  text-align: center;
+  margin: 20px 0;
+}
+
+#playwebCanvas {
+  background: #000; 
+  width: 480px;
+  height: 270px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 946px) {
+  .header-container {
+    grid-template-areas: "title logo menu"; /* Solo titulo, logo y menú, no nav */
+  }
+  
+  .logo {
+
+    width: 50px; /* O un tamaño específico adecuado */
+    height: auto; /* Mantiene la proporción del logo */
+    margin: 0 auto; /* Centra el logo si es necesario */
+  }
+
+  #launchMovil {
+    justify-self: end;
+    /* Alinear al final del área de grid */
+  }
+
+  .desktop-nav {
+    display: none;
+    /* Ocultar la navegación de escritorio */
+  }
+
+  /* Submenu */
+  .submenu input {
+    display: none;
+    /* Oculta el checkbox */
+  }
+
+  .submenu label {
+    display: block;
+    /* Hace que la etiqueta se comporte como un bloque, similar a un enlace */
+    color: #ffffff;
+    /* Ajusta el color según prefieras */
+    text-decoration: none;
+    /* Remueve el subrayado de los enlaces */
+    cursor: pointer;
+    /* Cambia el cursor a una mano para indicar que es un elemento interactivo */
+  }
+
+  .submenu ul {
+    display: none;
+    /* Oculta el submenu por defecto */
+    padding: 0;
+    /* Elimina el padding por defecto */
+    margin: 0;
+    /* Elimina el margen por defecto */
+    list-style-type: none;
+    /* Elimina los bullets de la lista */
+  }
+
+  .submenu li {
+    margin: 0;
+    /* Elimina el margen por defecto */
+  }
+
+  .submenu a {
+    display: block;
+    /* Hace que los enlaces se comporten como bloques */
+    padding: 10px;
+    /* Agrega relleno */
+    color: #000;
+    /* Color del texto */
+    text-decoration: none;
+    /* Elimina el subrayado de los enlaces */
+    border-bottom: 1px solid #ccc;
+    /* Agrega un borde en la parte inferior */
+  }
+
+  .submenu a:last-child {
+    border-bottom: none;
+    /* Elimina el borde en la parte inferior del último elemento */
+  }
+
+  .submenu input:checked + label + ul {
+    display: block;
+    /* Muestra el submenu cuando el checkbox está marcado */
+  }
+
+ 
+}
+
+/* Estilos para dispositivos móviles (pantallas hasta 946px) */
+@media screen and (max-width: 946px) {
+  .header-container {
+    grid-template-areas: "title logo menu"; /* Solo título, logo y menú, no nav */
+  }
+  
+  .logo {
+    width: 50px; /* Tamaño específico para el logo */
+    height: auto; /* Mantiene la proporción del logo */
+    margin: 0 auto; /* Centra el logo si es necesario */
+  }
+
+  #launchMovil {
+    justify-self: end; /* Alinear al final del área de grid */
+  }
+
+  .desktop-nav {
+    display: none; /* Ocultar la navegación de escritorio */
+  }
+
+  /* Submenu */
+  .submenu input {
+    display: none; /* Oculta el checkbox */
+  }
+
+  .submenu label {
+    display: block; /* Comportamiento de bloque para la etiqueta */
+    color: #ffffff; /* Color del texto */
+    text-decoration: none; /* Remueve el subrayado de los enlaces */
+    cursor: pointer; /* Cursor interactivo */
+  }
+
+  .submenu ul {
+    display: none; /* Oculta el submenu por defecto */
+    padding: 0; /* Elimina el padding por defecto */
+    margin: 0; /* Elimina el margen por defecto */
+    list-style-type: none; /* Elimina los bullets de la lista */
+  }
+
+  .submenu li {
+    margin: 0; /* Elimina el margen por defecto */
+  }
+
+  .submenu a {
+    display: block; /* Comportamiento de bloque para los enlaces */
+    padding: 10px; /* Agrega relleno */
+    color: #000; /* Color del texto */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    border-bottom: 1px solid #ccc; /* Borde inferior */
+  }
+
+  .submenu a:last-child {
+    border-bottom: none; /* Elimina el borde en la parte inferior del último elemento */
+  }
+
+  .submenu input:checked + label + ul {
+    display: block; /* Muestra el submenu cuando el checkbox está marcado */
+  }
+
+  /* Estilos específicos para pantallas más pequeñas dentro del rango de 946px */
+  @media screen and (max-width: 759px) {
+    .header-container {
+      grid-template-areas: "title logo menu"; /* Solo título, logo y menú, no nav */
+    }
+
+    .hero-content {
+      position: static;
+      transform: none;
+      padding: 20px;
+      text-align: center; /* Centra el texto */
+      width: auto;
+      font-size: 16px; /* Ajusta el tamaño del texto */
+      margin: 20px 0; /* Añade margen superior e inferior */
+    }
+
+    .hero {
+      min-height: 300px; /* Altura mínima del contenedor */
+      display: flex; /* Flexbox para centrar contenido verticalmente */
+      flex-direction: column; /* Organiza los hijos en columna */
+      justify-content: center; /* Centra contenido verticalmente */
+      gap: 20px; /* Espacio entre elementos */
+    }
+
+    .logo {
+      width: 50px; /* Tamaño específico para el logo */
+      height: auto; /* Mantiene la proporción del logo */
+      margin: 0 auto; /* Centra el logo */
+    }
+
+    #launchMovil {
+      justify-self: end; /* Alinear al final del área de grid */
+    }
+
+    .desktop-nav {
+      display: none; /* Ocultar la navegación de escritorio */
+    }
+
+    /* Submenu */
+    .submenu input {
+      display: none; /* Oculta el checkbox */
+    }
+
+    .submenu label {
+      display: block; /* Comportamiento de bloque para la etiqueta */
+      color: #ffffff; /* Color del texto */
+      text-decoration: none; /* Remueve el subrayado de los enlaces */
+      cursor: pointer; /* Cursor interactivo */
+    }
+
+    .submenu ul {
+      display: none; /* Oculta el submenu por defecto */
+      padding: 0; /* Elimina el padding por defecto */
+      margin: 0; /* Elimina el margen por defecto */
+      list-style-type: none; /* Elimina los bullets de la lista */
+    }
+
+    .submenu li {
+      margin: 0; /* Elimina el margen por defecto */
+    }
+
+    .submenu a {
+      display: block; /* Comportamiento de bloque para los enlaces */
+      padding: 10px; /* Agrega relleno */
+      color: #000; /* Color del texto */
+      text-decoration: none; /* Elimina el subrayado de los enlaces */
+      border-bottom: 1px solid #ccc; /* Borde inferior */
+    }
+
+    .submenu a:last-child {
+      border-bottom: none; /* Elimina el borde en la parte inferior del último elemento */
+    }
+
+    .submenu input:checked + label + ul {
+      display: block; /* Muestra el submenu cuando el checkbox está marcado */
+    }
+
+    .main-container {
+      grid-template-columns: 1fr; /* Una columna */
+      grid-template-areas:
+        "hero"
+        "contenido"
+        "plataformas"
+        "video"
+        "imagenes"
+        "sidebar"
+        "banner"
+        "gamecard";
+    }
+
+    @keyframes slideBanner {
+      0%, 100% {
+        transform: translateX(0%);
+      }
+      25% {
+        transform: translateX(calc(-857px + 100vw));
+      }
+      50% {
+        transform: translateX(0%);
+      }
+      75% {
+        transform: translateX(calc(857px - 100vw));
+      }
+    }
+
+    .banner-container {
+      width: 100vw; /* Ajusta el contenedor al 100% del ancho de la ventana */
+      overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+      -webkit-overflow-scrolling: touch; /* Fluido desplazamiento táctil en dispositivos iOS */
+      scroll-snap-type: x mandatory;
+    }
+
+    .banner-iframe {
+      min-width: 857px; /* Mantiene el ancho mínimo del iframe */
+      width: 857px; /* Ancho fijo del banner */
+      height: 238px; /* Altura fija del banner */
+      border: none; /* Elimina el borde del iframe */
+      animation: slideBanner 10s infinite linear; /* Aplica la animación */
+    }
+
+    .video-container {
+      width: 80%;
+      padding-top: 45%;
+      position: relative;
+      margin: 0 auto; /* Centra el contenedor */
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .imagenes-fila {
+      grid-template-columns: repeat(1, 1fr); /* Una imagen por fila en modo móvil */
+    }
+
+    .gamecard {
+      grid-template-columns: 1fr; /* Una columna para dispositivos móviles */
+    }
+
+    .gamecard h3 {
+      grid-column: 1 / 1; /* Situar el título ocupando las 3 columnas */
+    }
+
+    .gamecard img {
+      width: 100%; /* Hacer que las imágenes ocupen el 100% del ancho disponible */
+    }
+
+    .game-card {
+      grid-template-columns: 1fr; /* Una columna para dispositivos móviles */
+      grid-template-areas:
+        "title"
+        "image"
+        "platforms-editions"
+        "line"
+        "release"
+        "date"
+        "video"
+        "price"
+        "price2"
+        "description"
+        "buy"
+        "cart"
+        "imagenes";
+    }
+
+    .game-image {
+      display: flex; /* Flexbox para centrar la imagen */
+      justify-content: center; /* Centra la imagen horizontalmente */
+      align-items: center; /* Centra la imagen verticalmente si es necesario */
+    }
+
+    .game-title,
+    .game-release-date,
+    .date,
+    .game-price,
+    .price {
+      text-align: center; /* Centra el texto */
+    }
+
+    .video-container-ficha {
+      width: 80vw;
+      padding-top: 45vw;
+    }
+
+    .merchandising {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .merch-item {
+      flex: 0 0 100%; /* Ocupa el 100% del ancho disponible */
+      margin-right: 0; /* Remover margen derecho en modo móvil */
+    }
+
+    #snackbar {
+      min-width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .team-photo-parallax {
+      height: 400px; /* Altura más adecuada para dispositivos móviles */
+    }
+
+    .parallax-content {
+      max-width: 90%; /* Aumenta el ancho máximo en móviles para mejor legibilidad */
+    }
+
+    .location-map,
+    .youtube-video {
+      margin-left: 10px; /* Margen izquierdo */
+      margin-right: 10px; /* Margen derecho */
+    }
+
+    #playwebCanvas {
+      width: 100%; /* Hace que el canvas ocupe el 100% del ancho de su contenedor */
+      height: auto; /* Mantiene la proporción de aspecto del canvas */
+      max-width: 480px;
+      margin: 0 auto; /* Centra el canvas horizontalmente */
+    }
+  }
+}
+
+/* Estilos para escritorio */
+@media screen and (min-width: 946px) {
+  #navPrincipal {
+    position: static;
+    background-color: transparent;
+    display: block;
+    width: auto;
+    height: auto;
+    overflow: visible;
+  }
+
+  .desktop-nav {
+    display: block;
+  }
+
+  #launchMovil {
+    display: none;
+  }
+
+  .logo {
+    width: 50px;
+  }
+
+  .sidebar {
+    margin-right: 15px;
+  }
+}
+
+/* Estilos para la página de carrito */
+.cart {
+  margin-top: 100px;
+  margin-right: auto;
+  margin-bottom: 50px;
+  margin-left: auto;
+  max-width: 1200px;
+  padding: 20px;
+  background: linear-gradient(to right, #f8f8f8, #ffffff); /* Fondo claro */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(0, 0, 0, 0.05); /* Sombra más suave */
+}
+
+/* Estilo de los contenedores de productos en el carrito */
+#cart-container .merch-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #ffffff; /* Fondo blanco */
+  border: 1px solid #dcdcdc; /* Borde gris claro */
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+#cart-container .merch-item:hover {
+  background-color: #f0f0f0; /* Fondo gris claro al pasar el mouse */
+  transform: scale(1.05);
+}
+
+/* Estilos para imágenes de productos */
+#cart-container .merch-item img {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 2px solid #dcdcdc; /* Borde gris claro */
+}
+
+/* Encabezados de cada item en el carrito */
+#cart-container h2 {
+  font-size: 1.5rem;
+  color: #333333; /* Color de texto oscuro */
+}
+
+/* Precio de los productos en el carrito */
+#cart-container .merch-price p {
+  font-size: 1.2rem;
+  color: #27ae60; /* Verde para el precio */
+}
+
+/* Información adicional de los productos (plataforma y edición) */
+#cart-container p {
+  font-size: 1rem;
+  color: #555555; /* Gris medio para texto adicional */
+}
+
+/* Botones de grupo */
+#cart-container .button-group {
+  display: flex;
+  gap: 10px;
+}
+
+#cart-container .button-group button {
+  background-color: #3498db; /* Azul para los botones */
+  color: white;
+  border: 2px solid #2980b9; /* Azul oscuro para el borde */
+  border-radius: 4px;
+  margin-top: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+#cart-container .button-group button:hover {
+  background-color: #2980b9; /* Azul oscuro al pasar el mouse */
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+/* Adaptabilidad para dispositivos móviles */
+@media (max-width: 768px) {
+  #cart-container .merch-item {
+      flex-direction: column;
+  }
+
+  #cart-container .button-group {
+      margin-top: 10px;
+  }
+}
+
+/* Estilos para las pestañas y acordeón */
+.tablinks {
+  background-color: #e0e0e0; /* Fondo gris claro */
+  color: #333333; /* Color de texto oscuro */
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+}
+
+.tablinks:hover, .tablinks.active {
+  background-color: #cccccc; /* Fondo más oscuro al pasar el mouse */
+  color: #2980b9; /* Azul oscuro */
+}
+
+.tabcontent {
+  display: none;
+  padding: 20px;
+  border-top: none;
+  color: #333333; /* Color de texto oscuro */
+  background-color: #ffffff; /* Fondo blanco */
+}
+
+.accordion {
+  background-color: #f8f8f8; /* Fondo claro */
+  color: #333333; /* Color de texto oscuro */
+  cursor: pointer;
+  padding: 15px;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+  transition: 0.4s;
+}
+
+.accordion:hover {
+  background-color: #e0e0e0; /* Fondo gris claro al pasar el mouse */
+}
+
+.panel {
+  padding: 0 18px;
+  display: none;
+  background-color: #ffffff; /* Fondo blanco */
+  overflow: hidden;
+  border-bottom: 1px solid #dcdcdc; /* Borde gris claro */
+}
+
+.buy-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.total-container {
+  margin-right: 20px;
+  font-size: 1.2rem;
+  color: #333333; /* Color de texto oscuro */
+}
+
+.buy-button {
+  background-color: #27ae60; /* Verde */
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 15px rgba(39, 174, 96, 0.5);
+}
+
+.buy-button:hover {
+  background-color: #219150; /* Verde oscuro */
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(39, 174, 96, 0.7);
+}
+
+
+/* Modo Oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #2c3e50;
+    --visited-color: #68da27;
+    --text-color: #ffffff;
+    --header-bg-color: #333333;
+    --sidebar-bg-color: #252525;
+    --footer-bg-color: #333333;
+    --footer-text-color: #ffffff;
+    --card-bg-color: #2c2c2c;
+    --border-color: #444444;
+    --game-card-bg-color: #2c3e50;
+    --game-card-text-color: #ecf0f1;
+    --dropdowns-bg-color: #2746ae;
+    --dropdowns-text-color: #ddd;
+    --green-line-bg-color: #27ae60;
+    --button-bg-color: #e74c3c;
+    --button-hover-bg-color: #c0392b;
+    --merchandising-bg-color: #2c3e50;
+    --merch-item-bg-color: #34495e;
+    --merch-item-border-color: #ecf0f1;
+    --hover-bg-color: rgb(238, 93, 93);
+  }
+
+  body {
+    color: var(--text-color);
+   background-color: var(--background-color);
+  }
+
+  .logo-claro {
+    display: none;
+    /* Oculta el logo claro en modo oscuro */
+  }
+
+  .logo-oscuro {
+    display: block;
+    /* Muestra el logo oscuro en modo oscuro */
+  }
+
+  .icono-perfil-claro {
+    display: none;
+    /* Oculta el icono de perfil claro en modo oscuro */
+  }
+
+  .icono-perfil-oscuro {
+    display: inline;
+    /* Muestra el icono de perfil oscuro en modo oscuro */
+  }
+
+  .icono-carrito-claro {
+    display: none;
+    /* Oculta el icono de carrito claro en modo oscuro */
+  }
+
+  .icono-carrito-oscuro {
+    display: inline;
+    /* Muestra el icono de carrito oscuro en modo oscuro */
+  }
+
+  .icono-retroceder-claro,
+  .icono-avanzar-claro {
+    display: none;
+    /* Oculta los iconos claros en modo oscuro */
+  }
+
+  .icono-retroceder-oscuro,
+  .icono-avanzar-oscuro {
+    display: inline;
+    /* Muestra los iconos oscuros en modo oscuro */
+  }
+
+  .desktop-nav ul li a:hover {
+    background-color: var(--hover-bg-color);
+  }
+
+  .desktop-nav ul li a {
+    color: var(--text-color);
+  }
+
+  .header-container {
+    background-color: var(--header-bg-color);
+  }
+
+  .desktop-nav ul li.submenu ul {
+    background-color: var(--header-bg-color);
+  }
+
+  .desktop-nav ul li.submenu ul li a {
+    color: var(--text-color);
+  }
+
+  .desktop-nav ul li.submenu ul li a:hover {
+    background-color: var(--hover-bg-color);
+  }
+
+  .desktop-nav ul li.submenu ul li a:visited {
+    color: var(--visited-color);
+  }
+
+  .main-container {
+    background-color: var(--background-color); 
+  }
+
+  .sidebar {
+    background-color: var(--sidebar-bg-color);
+  }
+
+  .footer {
+    background-color: var(--footer-bg-color);
+    color: var(--footer-text-color);
+  }
+
+  .footer .social-icon {
+    border: none; /* Elimina bordes no deseados */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /
+}
+
+  .gamecard-wrapper {
+    background-color: var(--card-bg-color);
+  }
+
+  img,
+  iframe,
+  .imagenes-fila,
+  .sidebar .imagen-sidebar img,
+  .gamecard img {
+    border: 1px solid var(--border-color);
+  }
+
+  .desktop-nav ul li a:visited {
+    color: var(--visited-color);
+  }
+
+  .game-card {
+    background-color: var(--game-card-bg-color);
+    color: var(--game-card-text-color);
+  }
+
+  .dropdowns,
+  .dropdowns select {
+    background-color: var(--dropdowns-bg-color);
+  }
+
+  .dropdowns select {
+    color: var(--dropdowns-text-color);
+  }
+
+  .dropdowns option {
+    color: var(--dropdowns-bg-color);
+  }
+
+  .green-line {
+    background-color: var(--green-line-bg-color);
+  }
+
+  .game-release-date,
+  .game-price,
+  .date,
+  .price {
+    color: var(--game-card-text-color);
+  }
+
+  .game-buy,
+  .game-add,
+  .merch-add,
+  .merch-buy {
+    background-color: var(--button-bg-color);
+  }
+
+  .game-buy:hover,
+  .game-add:hover,
+  .merch-add:hover,
+  .merch-buy:hover {
+    background-color: var(--button-hover-bg-color);
+  }
+
+  .merchandising {
+    background-color: var(--merchandising-bg-color);
+  }
+
+  .merch-item {
+    background-color: var(--merch-item-bg-color);
+    border: 1px solid var(--merch-item-border-color);
+  }
+
+  .merch-price {
+    color: var(--text-color);
+  }
+
+  .about-us {
+    background: linear-gradient(to right, #00009c, #0099f0);
+  }
+
+  .cart {
+    background: linear-gradient(to right, var(--background-color), var(--card-bg-color));
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Estilo de los contenedores de productos en el carrito */
+  #cart-container .merch-item {
+    background-color: var(--merch-item-bg-color);
+    border: 1px solid var(--merch-item-border-color);
+  }
+
+  #cart-container .merch-item:hover {
+    background-color: #2c3e50;
+  }
+
+  /* Encabezados de cada item en el carrito */
+  #cart-container h2 {
+    color: var(--text-color);
+  }
+
+  /* Precio de los productos en el carrito */
+  #cart-container .merch-price p {
+    color: var(--green-line-bg-color);
+  }
+
+  /* Información adicional de los productos (plataforma y edición) */
+  #cart-container p {
+    color: var(--text-color);
+  }
+
+  /* Botones de grupo */
+  #cart-container .button-group button {
+    background-color: var(--button-bg-color);
+    border: 2px solid var(--button-hover-bg-color);
+  }
+
+  #cart-container .button-group button:hover {
+    background-color: var(--button-hover-bg-color);
+  }
+
+  /* Estilos para las pestañas y acordeón */
+  .tablinks {
+    background-color: #34495e;
+    color: var(--text-color);
+  }
+
+  .tablinks:hover, .tablinks.active {
+    background-color: var(--background-color);
+    color: var(--green-line-bg-color);
+  }
+
+  .tabcontent {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  .accordion {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  .accordion:hover {
+    background-color: #34495e;
+  }
+
+  .panel {
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .total-container p,
+  .buy-button-container p {
+    color: var(--text-color);
+  }
+
+  .total-container span {
+    color: var(--text-color);
+  }
+
+}
+
+
+
+/* Saltar Contenido */  
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: #000;
+  color: white;
+  padding: 8px 16px;
+  z-index: 1000;
+  transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
+
+
+/* Estilos para el botón de scroll */
+.scroll-up-button {
+  display: none; /* Inicialmente oculto */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001; /* Alto z-index para asegurar que esté en el primer plano */
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-up-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* Estilos para Cart Preview */
+/* Contenedor del icono del carrito */
+.icono-carrito-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Vista previa del carrito */
+#cart-preview {
+  width: 300px; /* Ajusta esto según el ancho necesario */
+  background: #1e1e2f; /* Fondo oscuro para un look gaming */
+  border: 1px solid #444;
+  padding: 20px;
+  display: none;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 255, 0.5);
+  top: 100%;
+  transform: translateX(0%);
+  position: absolute;
+  right: 0;
+  border-radius: 10px;
+  color: #fff; /* Texto blanco */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Lista de items en el carrito */
+#cart-items li {
+  list-style: none;
+  margin-bottom: 12px; /* Espacio entre los items */
+  background: #2b2b3c; /* Fondo ligeramente más claro para los items */
+  padding: 10px;
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+
+#cart-items li:hover {
+  transform: scale(1.05); /* Agranda ligeramente el item al pasar el ratón */
+}
+
+/* Botón de proceder al pago */
+#checkout-button {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(45deg, #ff4500, #ff6347); /* Gradiente rojo/naranja */
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+}
+
+#checkout-button:hover {
+  background: linear-gradient(45deg, #ff6347, #ff4500);
+  transform: scale(1.05); /* Agranda ligeramente el botón al pasar el ratón */
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.9);
+}
+
+/* Adaptabilidad para dispositivos móviles */
+@media (max-width: 768px) {
+  #cart-preview {
+    width: 100%;
+    right: 0;
+    left: 0;
+    transform: translateX(0);
+  }
+}
